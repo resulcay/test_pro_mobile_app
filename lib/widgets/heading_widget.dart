@@ -11,8 +11,9 @@ class HeadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Container(
-      width: SizeConfig.blockSizeHorizontal * 90,
+      width: (size.width / 100) * 90,
       margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 2),
       child: Row(
         children: [

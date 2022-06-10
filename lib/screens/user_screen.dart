@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:test_pro_mobile_app/screens/landing_screen.dart';
-import 'package:test_pro_mobile_app/service/auth/auth_methods.dart';
-import 'package:test_pro_mobile_app/service/auth/providers/google_sign_in_provider.dart';
+
+import '../service/auth/auth_methods.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -56,9 +55,6 @@ class _UserScreenState extends State<UserScreen> {
                     MaterialStateProperty.all(Colors.blue.shade900),
               ),
               onPressed: () {
-                final provider =
-                    Provider.of<GoogleSignInProvider>(context, listen: false);
-                provider.googleLogout();
                 AuthMethods().signOut();
                 Navigator.of(context).push(
                   MaterialPageRoute(

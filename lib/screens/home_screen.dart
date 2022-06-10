@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         title: SvgPicture.asset(
           'assets/icons/dumbell.svg',
-          height: SizeConfig.blockSizeHorizontal * 10,
+          height: (size.width / 100) * 10,
         ),
         centerTitle: true,
         actions: const [

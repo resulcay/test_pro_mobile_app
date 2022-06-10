@@ -9,7 +9,6 @@ import 'package:test_pro_mobile_app/widgets/decorated_text_field.dart';
 import '../constants/colors.dart';
 import '../constants/text_styles.dart';
 import '../service/auth/auth_methods.dart';
-import '../widgets/configs/size_config.dart';
 import '../widgets/snack_bar.dart';
 
 class PaginationStage2 extends StatefulWidget {
@@ -36,6 +35,7 @@ class _PaginationStage2State extends State<PaginationStage2> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     void signUpUser() async {
       String res = await AuthMethods().signUpUser(
         email: widget.emailController.text,
@@ -91,7 +91,7 @@ class _PaginationStage2State extends State<PaginationStage2> {
         centerTitle: true,
         title: SvgPicture.asset(
           'assets/icons/dumbell.svg',
-          height: SizeConfig.blockSizeHorizontal * 10,
+          height: (size.width / 100) * 10,
         ),
       ),
       body: IntroductionScreen(
@@ -126,8 +126,8 @@ class _PaginationStage2State extends State<PaginationStage2> {
                     child: Column(
                       children: [
                         Container(
-                          height: 150,
-                          width: 150,
+                          height: 140,
+                          width: 140,
                           decoration: BoxDecoration(
                             boxShadow: const [
                               BoxShadow(
@@ -171,8 +171,8 @@ class _PaginationStage2State extends State<PaginationStage2> {
                     child: Column(
                       children: [
                         Container(
-                          height: 150,
-                          width: 150,
+                          height: 140,
+                          width: 140,
                           decoration: BoxDecoration(
                             boxShadow: const [
                               BoxShadow(

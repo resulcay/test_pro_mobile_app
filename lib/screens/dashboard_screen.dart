@@ -16,13 +16,13 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         children: [
           _buildDaysBar(),
-          _buildDashboardCards(),
+          _buildDashboardCards(context),
         ],
       ),
     );
   }
 
-  Expanded _buildDashboardCards() {
+  Expanded _buildDashboardCards(BuildContext context) {
     return Expanded(
       child: Container(
         width: double.infinity,
@@ -49,6 +49,7 @@ class DashboardScreen extends StatelessWidget {
               metric2: '4000',
               iconPath: 'assets/icons/running.svg',
               value: 0.4,
+              context: context,
             ),
             _buildActivityCard(
               color1: CustomColors.kCyanColor,
@@ -60,6 +61,7 @@ class DashboardScreen extends StatelessWidget {
               metric2: '860',
               iconPath: 'assets/icons/footprints.svg',
               value: 0.8,
+              context: context,
             )
           ],
         ),
@@ -107,10 +109,12 @@ class DashboardScreen extends StatelessWidget {
       String? metric1,
       String? metric2,
       String? iconPath,
-      double? value}) {
+      double? value,
+      required BuildContext context}) {
+    final Size size = MediaQuery.of(context).size;
     return Container(
-      height: SizeConfig.blockSizeVertical * 30,
-      width: SizeConfig.blockSizeHorizontal * 90,
+      height: SizeConfig.blockSizeVertical * 27,
+      width: (size.width / 100) * 90,
       margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 1),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
@@ -121,7 +125,7 @@ class DashboardScreen extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Container(
               height: SizeConfig.blockSizeVertical * 12,
-              width: SizeConfig.blockSizeHorizontal * 23,
+              width: (size.width / 100) * 23,
               decoration: BoxDecoration(
                 color: color1,
                 borderRadius: const BorderRadius.only(
@@ -137,7 +141,7 @@ class DashboardScreen extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 20),
               child: CircleAvatar(
                 backgroundColor: color2,
-                radius: SizeConfig.blockSizeHorizontal * 8,
+                radius: (size.width / 100) * 8,
               ),
             ),
           ),
@@ -145,7 +149,7 @@ class DashboardScreen extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               height: SizeConfig.blockSizeVertical * 10,
-              width: SizeConfig.blockSizeHorizontal * 10,
+              width: (size.width / 100) * 10,
               decoration: BoxDecoration(
                 color: color3,
                 borderRadius: BorderRadius.only(
@@ -159,23 +163,23 @@ class DashboardScreen extends StatelessWidget {
           ),
           Positioned(
             bottom: SizeConfig.blockSizeVertical * 5,
-            right: SizeConfig.blockSizeHorizontal * 10,
+            right: (size.width / 100) * 10,
             child: CircleAvatar(
               backgroundColor: color4,
-              radius: SizeConfig.blockSizeHorizontal * 6,
+              radius: (size.width / 100) * 6,
             ),
           ),
           Positioned(
             top: SizeConfig.blockSizeVertical * 10,
-            left: SizeConfig.blockSizeHorizontal * 16,
+            left: (size.width / 100) * 16,
             child: CircleAvatar(
               backgroundColor: color4,
-              radius: SizeConfig.blockSizeHorizontal * 2,
+              radius: (size.width / 100) * 2,
             ),
           ),
           Positioned(
             top: SizeConfig.blockSizeVertical * 3,
-            left: SizeConfig.blockSizeHorizontal * 6,
+            left: (size.width / 100) * 6,
             child: Row(
               children: [
                 SvgPicture.asset(
@@ -205,7 +209,7 @@ class DashboardScreen extends StatelessWidget {
           ),
           Positioned(
             bottom: SizeConfig.blockSizeVertical * 5,
-            left: SizeConfig.blockSizeHorizontal * 6,
+            left: (size.width / 100) * 6,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -224,7 +228,7 @@ class DashboardScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: SizedBox(
               height: SizeConfig.blockSizeVertical * 1,
-              width: SizeConfig.blockSizeHorizontal * 75,
+              width: (size.width / 100) * 75,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: LinearProgressIndicator(

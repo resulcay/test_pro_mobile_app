@@ -16,12 +16,12 @@ class ActivityScreen extends StatelessWidget {
       height: SizeConfig.blockSizeVertical * 90,
       width: double.infinity,
       child: Column(
-        children: [_buildDateSection(current), _buildActivitySection()],
+        children: [_buildDateSection(current), _buildActivitySection(context)],
       ),
     );
   }
 
-  Widget _buildActivitySection() {
+  Widget _buildActivitySection(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
         child: Container(
@@ -44,13 +44,15 @@ class ActivityScreen extends StatelessWidget {
                   title: 'Running',
                   subtitle: '5km hard run',
                   time: '6:00 AM',
-                  iconPath: 'assets/icons/running.svg'),
+                  iconPath: 'assets/icons/running.svg',
+                  context: context),
               _buildCard(
                   color: CustomColors.kCyanColor,
                   title: 'Cycling',
                   subtitle: '15km cycle riding',
                   time: '10:00 AM',
-                  iconPath: 'assets/icons/bike.svg'),
+                  iconPath: 'assets/icons/bike.svg',
+                  context: context),
               const HeadingWidget(
                 text1: 'MEAL',
                 text2: 'Show All',
@@ -60,31 +62,36 @@ class ActivityScreen extends StatelessWidget {
                   title: 'Breakfast',
                   subtitle: 'Tea, Bread, Eggs',
                   time: '6:00 AM',
-                  iconPath: 'assets/icons/coffee.svg'),
+                  iconPath: 'assets/icons/coffee.svg',
+                  context: context),
               _buildCard(
                   color: CustomColors.kPrimaryColor,
                   title: 'Lunch',
                   subtitle: 'Hamburger',
                   time: '6:00 AM',
-                  iconPath: 'assets/icons/food.svg'),
+                  iconPath: 'assets/icons/food.svg',
+                  context: context),
               _buildCard(
                   color: CustomColors.kCyanColor,
                   title: 'Dinner',
                   subtitle: 'Chicken and Waffles',
                   time: '6:00 AM',
-                  iconPath: 'assets/icons/food.svg'),
+                  iconPath: 'assets/icons/food.svg',
+                  context: context),
               _buildCard(
                   color: CustomColors.kCyanColor,
                   title: 'Dinner',
                   subtitle: 'Chicken and Waffles',
                   time: '2:00 PM',
-                  iconPath: 'assets/icons/food.svg'),
+                  iconPath: 'assets/icons/food.svg',
+                  context: context),
               _buildCard(
                   color: CustomColors.kCyanColor,
                   title: 'Dinner',
                   subtitle: 'Chicken and Waffles',
                   time: '9:00 PM',
-                  iconPath: 'assets/icons/food.svg'),
+                  iconPath: 'assets/icons/food.svg',
+                  context: context),
             ],
           ),
         ),
@@ -97,9 +104,11 @@ class ActivityScreen extends StatelessWidget {
       required String title,
       required String subtitle,
       required String time,
-      required String iconPath}) {
+      required String iconPath,
+      required BuildContext context}) {
+    final Size size = MediaQuery.of(context).size;
     return Container(
-      width: SizeConfig.blockSizeHorizontal * 90,
+      width: (size.width / 100) * 90,
       margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical * 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
