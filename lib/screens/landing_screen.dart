@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_pro_mobile_app/service/auth/providers/facebook_sign_in_provider.dart';
 import 'package:test_pro_mobile_app/widgets/snack_bar.dart';
 
 import '../components/elevated_button_with_padding.dart';
@@ -19,6 +20,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
+    Map? userData;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: StreamBuilder(
@@ -92,7 +94,13 @@ class _LandingScreenState extends State<LandingScreen> {
                       ElevatedButtonWithPadding(
                         logoName: 'facebook',
                         destination: 'Facebook',
-                        function: () {},
+                        function: () {
+                          FacebookSignIn().facebookLogin();
+                          setState(() {
+                            userData = FacebookSignIn().userData;
+                            print(userData);
+                          });
+                        },
                       ),
                       TextButton(
                         onPressed: () {
