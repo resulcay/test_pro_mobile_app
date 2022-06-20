@@ -69,6 +69,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       ),
                       const SizedBox(
                         height: 10,
+
                       ),
                       ElevatedButtonWithPadding(
                         logoName: 'mail',
